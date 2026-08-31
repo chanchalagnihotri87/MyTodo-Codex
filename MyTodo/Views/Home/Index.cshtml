@@ -46,6 +46,9 @@
                                 <p class="card-text text-muted mb-0">@lifeArea.Description</p>
                             }
                         </div>
+                        <div class="card-footer bg-transparent border-top-0 pt-0">
+                            <a asp-controller="LifeAreas" asp-action="Edit" asp-route-id="@lifeArea.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                        </div>
                     </article>
                 </div>
             }
