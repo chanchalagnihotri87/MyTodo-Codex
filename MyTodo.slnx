@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="MyTodo/MyTodo.csproj" />
+  <Project Path="MyTodo.Domain/MyTodo.Domain.csproj" />
+  <Project Path="MyTodo.Infrastructure/MyTodo.Infrastructure.csproj" />
 </Solution>

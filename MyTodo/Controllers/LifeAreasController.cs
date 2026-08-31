@@ -95,4 +95,38 @@ public class LifeAreasController : Controller
         TempData["SuccessMessage"] = $"{lifeArea.Name} was updated.";
         return RedirectToAction("Index", "Home");
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var lifeArea = await _context.LifeAreas.FindAsync(id);
+        if (lifeArea is null)
+        {
+            return NotFound();
+        }
+
+        return View(new DeleteLifeAreaViewModel
+        {
+            Id = lifeArea.Id,
+            Name = lifeArea.Name,
+            Description = lifeArea.Description
+        });
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var lifeArea = await _context.LifeAreas.FindAsync(id);
+        if (lifeArea is null)
+        {
+            return NotFound();
+        }
+
+        _context.LifeAreas.Remove(lifeArea);
+        await _context.SaveChangesAsync();
+
+        TempData["SuccessMessage"] = $"{lifeArea.Name} was deleted.";
+        return RedirectToAction("Index", "Home");
+    }
 }
