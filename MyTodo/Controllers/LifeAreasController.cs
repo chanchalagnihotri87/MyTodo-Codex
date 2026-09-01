@@ -55,8 +55,7 @@ public class LifeAreasController : Controller
         {
             Id = lifeArea.Id,
             Name = lifeArea.Name,
-            Description = lifeArea.Description,
-            IsActive = lifeArea.IsActive
+            Description = lifeArea.Description
         });
     }
 
@@ -87,7 +86,6 @@ public class LifeAreasController : Controller
 
         lifeArea.Name = model.Name.Trim();
         lifeArea.Description = string.IsNullOrWhiteSpace(model.Description) ? null : model.Description.Trim();
-        lifeArea.IsActive = model.IsActive;
         lifeArea.UpdatedAtUtc = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();

@@ -14,6 +14,4 @@ public class EditLifeAreaViewModel
     [StringLength(1_000)]
     public string? Description { get; set; }
 
-    [Display(Name = "Active")]
-    public bool IsActive { get; set; }
 }

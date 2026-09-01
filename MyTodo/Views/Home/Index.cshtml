@@ -11,7 +11,6 @@
             <p class="text-muted mb-0">The areas of life you want to manage.</p>
         </div>
         <div class="d-flex align-items-center gap-2">
-            <span class="badge text-bg-secondary">@Model.LifeAreas.Count</span>
             <a asp-controller="LifeAreas" asp-action="Create" class="btn btn-primary">Create life area</a>
         </div>
     </div>
@@ -35,20 +34,20 @@
                 <div class="col-md-6 col-lg-4">
                     <article class="card h-100 shadow-sm">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start gap-2">
-                                <h2 class="h5 card-title mb-2">@lifeArea.Name</h2>
-                                <span class="badge @(lifeArea.IsActive ? "text-bg-success" : "text-bg-secondary")">
-                                    @(lifeArea.IsActive ? "Active" : "Inactive")
-                                </span>
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h2 class="h5 card-title mb-0">@lifeArea.Name</h2>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm text-body p-0 ms-2" type="button" id="dropdownMenu@(lifeArea.Id)" data-bs-toggle="dropdown" aria-expanded="false" title="More options">⋮</button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu@(lifeArea.Id)">
+                                        <li><a class="dropdown-item" asp-controller="LifeAreas" asp-action="Edit" asp-route-id="@lifeArea.Id">Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" asp-controller="LifeAreas" asp-action="Delete" asp-route-id="@lifeArea.Id">Delete</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             @if (!string.IsNullOrWhiteSpace(lifeArea.Description))
                             {
                                 <p class="card-text text-muted mb-0">@lifeArea.Description</p>
                             }
-                        </div>
-                        <div class="card-footer bg-transparent border-top-0 pt-0">
-                            <a asp-controller="LifeAreas" asp-action="Edit" asp-route-id="@lifeArea.Id" class="btn btn-sm btn-outline-primary">Edit</a>
-                            <a asp-controller="LifeAreas" asp-action="Delete" asp-route-id="@lifeArea.Id" class="btn btn-sm btn-outline-danger">Delete</a>
                         </div>
                     </article>
                 </div>

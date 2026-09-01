@@ -19,9 +19,6 @@ public class LifeAreaConfiguration : IEntityTypeConfiguration<LifeArea>
         builder.Property(lifeArea => lifeArea.Description)
             .HasMaxLength(1_000);
 
-        builder.Property(lifeArea => lifeArea.IsActive)
-            .HasDefaultValue(true);
-
         builder.Property(lifeArea => lifeArea.CreatedAtUtc)
             .IsRequired();
     }
